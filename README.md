@@ -1,7 +1,7 @@
 # A step towards understanding why classification helps regression
 Python implementation of the experiments from **"A step towards understanding why classification helps regression"**, __Pintea, Silvia L and Yancong, Lin and Dijkstra, Jouke and van Gemert, Jan C, **ICCV**, 2023__.
 
-[<a href="https://arxiv.org/abs/">Arxiv</a>] 
+[<a href="https://arxiv.org/abs/2308.10603">Arxiv</a>] 
 
 
 ### Overview
