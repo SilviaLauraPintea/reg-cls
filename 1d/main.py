@@ -49,6 +49,11 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "--bn", default=False, action="store_true", help="If we use bn or not"
+)
+
+
+parser.add_argument(
     "--num_layer",
     type=int,
     default=1,
