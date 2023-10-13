@@ -59,4 +59,4 @@ demo.sh         -- example on training and evaluating one 1 dataset
 - Run ```bash demo.sh```
 
 #### Step 3) Plot the results
-- Run ```python plot.py```
+- Run ```python plot_test.py```
