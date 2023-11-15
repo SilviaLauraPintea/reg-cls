@@ -28,7 +28,7 @@ Our main takeaway is: for a regression task, if the data sampling is imbalanced,
 The code for the experiments on **1D data**, **images** (NYUD-DIR, IMDB-DIR), **videos** (Breakfast):
 
 [<a href="https://github.com/SilviaLauraPintea/reg-cls/tree/main/1d">1d data</a>] [<a href="https://github.com/SilviaLauraPintea/reg-cls/tree/main/images">images</a>] 
-<!---- [<a href="https://github.com/SilviaLauraPintea/test-reg-cls/tree/main/videos">videos</a>] !-->
+[<a href="https://github.com/SilviaLauraPintea/reg-cls/tree/main/video">videos</a>]
 
 For the **image** experiemnts we use the code of:
 - <a href="https://github.com/YyzHarry/imbalanced-regression">**"Delving into Deep Imbalanced Regression", Yuzhe Yang, Kaiwen Zha, Ying-Cong Chen, Hao Wang, Dina Katabi _(ICML 2021)_**</a>.
