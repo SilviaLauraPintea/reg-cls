@@ -1,4 +1,82 @@
 ### 1D data
+<div style="float:left;">
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 5-hidden nodes (Adam) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 5-hidden nodes (SGD) 
+</div>
+<div style="float:left; ">
+    <img src='logs/adam(5).png' alt='missing' style='width:400px;' />
+    <img src='logs/sgd(5).png' alt='missing' style='width:400px;' />
+</div>
+
+<div style="float:left;">
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 9-hidden nodes (Adam) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 9-hidden nodes (SGD) 
+</div>
+<div style="float:left; ">
+    <img src='logs/adam(9).png' alt='missing' style='width:400px;' />
+    <img src='logs/sgd(9).png' alt='missing' style='width:400px;' />
+</div>
+
+<div style="float:left;">
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 17-hidden nodes (Adam) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 17-hidden nodes (SGD) 
+</div>
+<div style="float:left; ">
+    <img src='logs/adam(17).png' alt='missing' style='width:400px;' />
+    <img src='logs/sgd(17).png' alt='missing' style='width:400px;' />
+</div>
+
+<div style="float:left;">
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 33-hidden nodes (Adam) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 33-hidden nodes (SGD) 
+</div>
+<div style="float:left; ">
+    <img src='logs/adam(33).png' alt='missing' style='width:400px;' />
+    <img src='logs/sgd(33).png' alt='missing' style='width:400px;' />
+</div>
+
+<div style="float:left;">
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 65-hidden nodes (Adam) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+    <span style='display:inline-block; width:200px; padding: 100px 0;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clean 65-hidden nodes (SGD) 
+</div>
+<div style="float:left; ">    
+    <img src='logs/adam(65).png' alt='missing' style='width:400px;' />
+    <img src='logs/sgd(65).png' alt='missing' style='width:400px;' />
+</div>
+        
+**New:** 
+Varying the model number of parameter and doing a thorough hyper-parameter search.</br> 
+Hyper-parameter search on the _Clean_ val-set, using the either Adam optimizer or the SGD, when adding a scaling _s_ to both the classification and the regression losses:
+```math
+L_{reg} = s \mid f(x), y \mid_{2}^{2},
+```
+```math
+L_{reg+cls} = s (\lambda L_{reg} + L_{CE} (\hat{f}(x), \hat{y})),
+```
+```math
+\text{ where }y\text{ is the target and }f(x)\text{ the prediction, }\hat{y}\text{ is the class label and }\hat{f}(x)\text{ the class prediction, and }
+```
+```math
+\lambda\text{ is the scaling between the losses, and }s\text{ is a global loss-scaling hyperparamter.}
+```
+over the: 
+
+```math
+lr \in \{1e-5, 1e-4, 1e-3, 1e-2, 1e-1\}
+```
+```math
+s  \in \{1e-4, 1e-3, 1e-2, 1e-1, 1e+0, 1e+1, 1e+2, 1e+3, 1e+4\}
+```
+```math
+\lambda \in \{1e-4, 1e-3, 1e-2, 1e-1, 1e+0, 1e+1, 1e+2, 1e+3, 1e+4\}                                               
+```
+Results are over 10 functions repeated with 3 seeds. 
+
+**Observation:** With these losses, when using an Adam optimizer a classification loss helps when the model is large (maybe over-parameterized?). However, for SGD the gain is more clearly visible when the model is small.
+<div style="clear:both;"></div>
+
+<hr>
+
 <div style="float:left; ">
     <img src='logs/clean/test_plot.png' alt='missing' style='width:300px;' />
     <img src='logs/noisey_0.1/test_plot.png' alt='missing' style='width:300px;' />
@@ -18,7 +96,6 @@ L_{reg} = \mid f(x), y \mid_{2}^{2},\text{ where }y\text{ is the target and }f(x
 ```math
 L_{reg+cls} = \lambda L_{reg} + L_{CE} (\hat{f}(x), \hat{y}),\text{ where }\hat{y}\text{ is the class label and }\hat{f}(x)\text{ the class prediction}
 ```
-
 <div style="clear:both;"></div>
 
 ### Requirements
@@ -59,4 +136,4 @@ demo.sh         -- example on training and evaluating one 1 dataset
 - Run ```bash demo.sh```
 
 #### Step 3) Plot the results
-- Run ```python plot_test.py```
+- Run ```python plot.py```
